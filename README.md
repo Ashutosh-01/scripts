@@ -20,7 +20,7 @@ Let's get to the point
 </ol>
 
 ## Example :
-> The example script which is given here has numRecords = ("1000" "2500" "5000"). So the program will give 1000/2500/5000 numbers respectively to the sorting program and will calculate time required for program using <i>"time"</i> command. The time values will also be stored in the file specified in DATA_NAME variable. 
+> The example script which is given here has numRecords = ("1000" "2500" "5000"). So the program will give 1000/2500/5000 numbers respectively to the sorting program and will calculate time required for program using <i>"time"</i> command(Please note that program does not generate random numbers, that work is done using random.c program ). The time values will also be stored in the file specified in DATA_NAME variable. 
 Here's what you should see on terminal.
 <pre>
 >. ./calculateTime.sh<br>
