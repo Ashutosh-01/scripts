@@ -25,10 +25,10 @@ set -o pipefail
 
 PROGRAM="sort1"
 DELETE_PREVIOUS_DATAFILE=true
-DATA_NAME="data0"
+DATA_NAME="data1"
 GENERATE_RANDOM_DATA=false
 USE_TIME_FUNCTION=true
-declare -a numRecords=("1000" "2500" "5000" "7500" "10000" "15000" "20000" "25000" "30000" "35000" "40000" "45000" "50000" "55000" "60000" "65000" "80000" "90000" "100000" "160000" "250000" "320000" "500000" "1000000" )
+declare -a numRecords=("1000" "2500" "5000")
 
 #   Start doing stuff now
 if [ "$DELETE_PREVIOUS_DATAFILE" = true ]
@@ -52,18 +52,18 @@ then
     for ((i = 0; i < ${#numRecords[@]}; ++i))
     do
         echo -e "For ${numRecords[i]} records :\n"
-        echo ${numRecords[i]} | tr '\n' '\t' >> data0
+        echo ${numRecords[i]} | tr '\n' '\t' >> $DATA_NAME
         cat ${numRecords[i]}.txt | ./$PROGRAM | tee -a $DATA_NAME
         printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
     done
 fi
 if [ "$USE_TIME_FUNCTION" = true ]
 then
-    echo -e "Calculating time without \"time command\" ..."
+    echo -e "Calculating time using \"time command\" ..."
     for ((i = 0; i < ${#numRecords[@]}; ++i))
     do
         echo -e "For ${numRecords[i]} records :\n"
-        echo ${numRecords[i]} | tr '\n' '\t' >> data0
+        echo ${numRecords[i]} | tr '\n' '\t' >> $DATA_NAME
         cat ${numRecords[i]}.txt | { /usr/bin/time -f "%U" ./$PROGRAM ;} |& tee -a $DATA_NAME
         printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
     done
