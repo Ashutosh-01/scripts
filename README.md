@@ -41,10 +41,10 @@ For 5000 records :<br>
 
 
 After execution, you will get a file called data1 (for the example script present here). This data1 file looks as follows :<br>
-...
+```
 1000  0.00
 2500  0.03
 5000  0.10
-...
+```
 <br>
-Now this file can be used to plot graph easily ! I hope this clears all your questions
+Now this file can be used to plot graph easily ! 
